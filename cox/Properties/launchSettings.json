@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "lox": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\garyc\\documents\\visual studio 2017\\Projects\\lox\\lox\\CodeSamples\\test.lox\""
+    }
+  }
+}

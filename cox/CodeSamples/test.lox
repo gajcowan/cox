@@ -1,0 +1,4 @@
+﻿var a = 12.34;
+//print( $"Number: 1234567890");
+print( $"Number: {a,10:c}");
+//print( $"Number: {a,-10}");
