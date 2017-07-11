@@ -1,16 +1,16 @@
-﻿using lox.Tokens;
+﻿using cox.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace lox
+namespace cox
 {
-    public class LoxInstance
+    public class CoxInstance
     {
-        private LoxClass Klass;
+        private CoxClass Klass;
         public Dictionary<String, Object> Fields = new Dictionary<String, Object>();
 
-        public LoxInstance(LoxClass klass)
+        public CoxInstance(CoxClass klass)
         {
             Klass = klass;
         }
@@ -22,7 +22,7 @@ namespace lox
                 return Fields[name.Lexeme];
             }
 
-            LoxFunction method = Klass.FindMethod(this, name.Lexeme);
+            CoxFunction method = Klass.FindMethod(this, name.Lexeme);
             if (method != null)
                 return method;
 

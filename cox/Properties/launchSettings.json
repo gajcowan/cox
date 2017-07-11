@@ -1,8 +1,8 @@
 {
   "profiles": {
-    "lox": {
+    "cox": {
       "commandName": "Project",
-      "commandLineArgs": "\"C:\\Users\\garyc\\documents\\visual studio 2017\\Projects\\lox\\lox\\CodeSamples\\test.lox\""
+      "commandLineArgs": "\"C:\\Users\\garyc\\documents\\visual studio 2017\\Projects\\cox\\cox\\CodeSamples\\test.cox\""
     }
   }
 }

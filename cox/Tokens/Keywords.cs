@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace lox.Tokens
+namespace cox.Tokens
 {
     public class Keywords
     {

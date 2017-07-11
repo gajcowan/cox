@@ -2,28 +2,28 @@
 using System.Collections.Generic;
 using System.Text;
 
-using lox.AbstractSyntaxTree;
+using cox.AbstractSyntaxTree;
 
-namespace lox
+namespace cox
 {
-    public class LoxFunction : ICallable
+    public class CoxFunction : ICallable
     {
         private Function Declaration;
         private Environment Closure;
         private Boolean IsInitializer;
 
-        public LoxFunction(Function declaration, Environment closure, Boolean isInitializer)
+        public CoxFunction(Function declaration, Environment closure, Boolean isInitializer)
         {
             Declaration = declaration;
             Closure = closure;
             IsInitializer = isInitializer;
         }
 
-        public LoxFunction Bind(LoxInstance self)
+        public CoxFunction Bind(CoxInstance self)
         {
             Environment environment = new Environment(Closure);
             environment.Define("this", self);
-            return new LoxFunction(Declaration, environment, IsInitializer);
+            return new CoxFunction(Declaration, environment, IsInitializer);
         }
 
         override public String ToString()

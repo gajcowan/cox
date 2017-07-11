@@ -2,24 +2,24 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace lox
+namespace cox
 {
-    public class LoxClass
+    public class CoxClass
     {
         public String Name;
-        private LoxClass Superclass;
-        private Dictionary<String, LoxFunction> Methods;
+        private CoxClass Superclass;
+        private Dictionary<String, CoxFunction> Methods;
 
-        public LoxClass(String name, LoxClass superclass, Dictionary<String, LoxFunction> methods)
+        public CoxClass(String name, CoxClass superclass, Dictionary<String, CoxFunction> methods)
         {
             Name = name;
             Superclass = superclass;
             Methods = methods;
         }
 
-        public LoxFunction FindMethod(LoxInstance instance, String name)
+        public CoxFunction FindMethod(CoxInstance instance, String name)
         {
-            LoxClass klass = this;
+            CoxClass klass = this;
             while (klass != null)
             {
                 if (klass.Methods.ContainsKey(name))
@@ -40,7 +40,7 @@ namespace lox
 
         public int RequiredArguments()
         {
-            LoxFunction initializer = Methods["init"];
+            CoxFunction initializer = Methods["init"];
             if (initializer == null)
                 return 0;
 
@@ -49,9 +49,9 @@ namespace lox
 
         public Object Call(Interpreter interpreter, List<Object> arguments)
         {
-            LoxInstance instance = new LoxInstance(this);
+            CoxInstance instance = new CoxInstance(this);
 
-            LoxFunction initializer = Methods["init"];
+            CoxFunction initializer = Methods["init"];
             if (initializer != null)
             {
                 initializer.Bind(instance).Call(interpreter, arguments);

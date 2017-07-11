@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-using lox;
-using lox.Tokens;
+using cox;
+using cox.Tokens;
 
-namespace lox
+namespace cox
 {
 
     public class RuntimeError : Exception

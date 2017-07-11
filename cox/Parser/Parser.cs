@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-using lox.AbstractSyntaxTree;
-using lox.Tokens;
+using cox.AbstractSyntaxTree;
+using cox.Tokens;
 
-namespace lox
+namespace cox
 {
 
     //  expression  → assignment 
@@ -673,7 +673,7 @@ namespace lox
 
         private ParseError Error(Token token, String message)
         {
-            Lox.Error(token, message);
+            Cox.Error(token, message);
             return new ParseError();
         }
 

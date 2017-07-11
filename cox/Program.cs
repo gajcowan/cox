@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 
-using lox.AbstractSyntaxTree;
-using lox.Tokens;
+using cox.AbstractSyntaxTree;
+using cox.Tokens;
 
-namespace lox
+namespace cox
 {
-    public class Lox
+    public class Cox
     {
         private static Interpreter Interpreter = new Interpreter();
         private static Boolean HadError = false;
@@ -21,7 +21,7 @@ namespace lox
             
             if(args.Length > 1)
             {
-                Console.WriteLine("Usag: lox [script]");
+                Console.WriteLine("Usag: cox [script]");
             }
             else
             {

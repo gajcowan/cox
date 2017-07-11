@@ -1,9 +1,9 @@
-﻿using lox.Tokens;
+﻿using cox.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace lox
+namespace cox
 {
     public class Environment
     {

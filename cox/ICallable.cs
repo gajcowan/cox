@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace lox
+namespace cox
 {
     public interface ICallable
     {

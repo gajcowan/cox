@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-using lox.Tokens;
+using cox.Tokens;
 
-namespace lox
+namespace cox
 {
     public class StringInterpolationScanner : Lexer
     {

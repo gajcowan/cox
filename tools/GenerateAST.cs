@@ -58,9 +58,9 @@ namespace GenerateAST
             outputFile.WriteLine($"using System;");
             outputFile.WriteLine($"using System.Collections.Generic;");
             outputFile.WriteLine($"");
-            outputFile.WriteLine($"using lox.Tokens;");
+            outputFile.WriteLine($"using cox.Tokens;");
             outputFile.WriteLine($"");
-            outputFile.WriteLine($"namespace lox.AbstractSyntaxTree");
+            outputFile.WriteLine($"namespace cox.AbstractSyntaxTree");
             outputFile.WriteLine($"{{");
             //outputFile.WriteLine($"{{");
 

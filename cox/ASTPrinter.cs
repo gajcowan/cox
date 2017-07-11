@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-using lox.AbstractSyntaxTree;
+using cox.AbstractSyntaxTree;
 
-namespace lox
+namespace cox
 {
     public class ASTPrinter : IVisitorExpr<String>, IVisitorStmt<String>
     {

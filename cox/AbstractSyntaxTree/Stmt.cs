@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 
-using lox.Tokens;
+using cox.Tokens;
 
-namespace lox.AbstractSyntaxTree
+namespace cox.AbstractSyntaxTree
 {
 	public interface IVisitorStmt<T>
 	{

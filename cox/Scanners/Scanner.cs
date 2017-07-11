@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using lox.Tokens;
+using cox.Tokens;
 
 
-namespace lox
+namespace cox
 {
     public class Scanner : Lexer
     {
@@ -35,7 +35,7 @@ namespace lox
                     }
                     else
                     {
-                        Lox.Error(Line, $"Expected '\"'");
+                        Cox.Error(Line, $"Expected '\"'");
                     }
                     break;
                 case '(':
@@ -109,7 +109,7 @@ namespace lox
                                 }
                                 if(IsAtEnd())
                                 {
-                                    Lox.Error(Line, $"End-of-File found, '*/' expected");
+                                    Cox.Error(Line, $"End-of-File found, '*/' expected");
                                 }
                                 else
                                 {
@@ -196,7 +196,7 @@ namespace lox
                         if(Char.IsLetter(c) || c == '_')
                             Identifier();
                         else
-                            Lox.Error(Line, $"Unexpected Character {c}");
+                            Cox.Error(Line, $"Unexpected Character {c}");
                     break;
             }
         }
@@ -219,7 +219,7 @@ namespace lox
             // Unterminated string.
             if(IsAtEnd())
             {
-                Lox.Error(Line, "Unterminated string.");
+                Cox.Error(Line, "Unterminated string.");
                 return null;
             }
 
@@ -248,7 +248,7 @@ namespace lox
             // Unterminated string.
             if(IsAtEnd())
             {
-                Lox.Error(Line, "Unterminated string.");
+                Cox.Error(Line, "Unterminated string.");
                 return;
             }
 

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-using lox.AbstractSyntaxTree;
-using lox.Tokens;
+using cox.AbstractSyntaxTree;
+using cox.Tokens;
 
-namespace lox
+namespace cox
 {
     public class ReturnEX : Exception
     {
@@ -41,7 +41,7 @@ namespace lox
             }
             catch (RuntimeError error)
             {
-                Lox.RuntimeError(error);
+                Cox.RuntimeError(error);
             }
         }
 
@@ -252,9 +252,9 @@ namespace lox
         public object VisitGetExpr(Get expr)
         {
             Object obj = Evaluate(expr.Obj);
-            if (obj is LoxInstance)
+            if (obj is CoxInstance)
             {
-                return ((LoxInstance)obj).GetProperty(expr.Name);
+                return ((CoxInstance)obj).GetProperty(expr.Name);
             }
 
             throw new RuntimeError(expr.Name, "Only instances have properties.");
@@ -293,8 +293,8 @@ namespace lox
             Object value = Evaluate(expr.Value);
             Object obj = Evaluate(expr.Obj);
 
-            if (obj is LoxInstance) {
-                ((LoxInstance)obj).Fields.Add(expr.Name.Lexeme, value);
+            if (obj is CoxInstance) {
+                ((CoxInstance)obj).Fields.Add(expr.Name.Lexeme, value);
                 return value;
             }
 
@@ -304,12 +304,12 @@ namespace lox
         public object VisitSuperExpr(Super expr)
         {
             int distance = Locals[expr];
-            LoxClass superclass = (LoxClass)Environment.GetAt(distance, "super");
+            CoxClass superclass = (CoxClass)Environment.GetAt(distance, "super");
 
             // "this" is always one level nearer than "super"'s environment.
-            LoxInstance receiver = (LoxInstance)Environment.GetAt(distance - 1, "this");
+            CoxInstance receiver = (CoxInstance)Environment.GetAt(distance - 1, "this");
 
-            LoxFunction method = superclass.FindMethod(receiver, expr.Method.Lexeme);
+            CoxFunction method = superclass.FindMethod(receiver, expr.Method.Lexeme);
             if (method == null)
             {
                 throw new RuntimeError(expr.Method, $"Undefined property '{expr.Method.Lexeme}'.");
@@ -382,13 +382,13 @@ namespace lox
         {
             Environment.Define(stmt.Name.Lexeme, null);
 
-            Dictionary<String, LoxFunction> methods = new Dictionary<String, LoxFunction>();
+            Dictionary<String, CoxFunction> methods = new Dictionary<String, CoxFunction>();
 
             Object superclass = null;
             if (stmt.Superclass != null)
             {
                 superclass = Evaluate(stmt.Superclass);
-                if (!(superclass is LoxClass))
+                if (!(superclass is CoxClass))
                 {
                     throw new RuntimeError(stmt.Name, "Superclass must be a class.");
                 }
@@ -398,11 +398,11 @@ namespace lox
             }
             foreach (Function method in stmt.Methods)
             {
-                LoxFunction function = new LoxFunction(method, Environment, method.Name.Lexeme.Equals("init"));
+                CoxFunction function = new CoxFunction(method, Environment, method.Name.Lexeme.Equals("init"));
                 methods.Add(method.Name.Lexeme, function);
             }
 
-            LoxClass klass = new LoxClass(stmt.Name.Lexeme, (LoxClass)superclass, methods);
+            CoxClass klass = new CoxClass(stmt.Name.Lexeme, (CoxClass)superclass, methods);
 
             if (superclass != null)
             {
@@ -435,7 +435,7 @@ namespace lox
         public object VisitFunctionStmt(Function stmt)
         {
             Environment.Define(stmt.Name.Lexeme, null);
-            LoxFunction function = new LoxFunction(stmt, Environment, false);
+            CoxFunction function = new CoxFunction(stmt, Environment, false);
             Environment.Assign(stmt.Name, function);
             return null;
         }

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-using lox.AbstractSyntaxTree;
-using lox.Tokens;
+using cox.AbstractSyntaxTree;
+using cox.Tokens;
 
-namespace lox
+namespace cox
 {
     public class Resolver : IVisitorExpr<object>, IVisitorStmt<object>
     {
@@ -166,14 +166,14 @@ namespace lox
         {
             if (currentFunction == FunctionType.NONE)
             {
-                Lox.Error(stmt.Keyword, "Cannot return from top-level code.");
+                Cox.Error(stmt.Keyword, "Cannot return from top-level code.");
             }
 
             if (stmt.Value != null)
             {
                 if (currentFunction == FunctionType.INITIALIZER)
                 {
-                    Lox.Error(stmt.Keyword, "Cannot return a value from an initializer.");
+                    Cox.Error(stmt.Keyword, "Cannot return a value from an initializer.");
                 }
 
                 Resolve(stmt.Value); 
@@ -193,11 +193,11 @@ namespace lox
         {
             if (currentClass == ClassType.NONE)
             {
-                Lox.Error(expr.Keyword, "Cannot use 'super' outside of a class.");
+                Cox.Error(expr.Keyword, "Cannot use 'super' outside of a class.");
             }
             else if (currentClass != ClassType.SUBCLASS)
             {
-                Lox.Error(expr.Keyword, "Cannot use 'super' in a class with no superclass.");
+                Cox.Error(expr.Keyword, "Cannot use 'super' in a class with no superclass.");
             }
             else
             {
@@ -210,7 +210,7 @@ namespace lox
         {
             if (currentClass == ClassType.NONE)
             {
-                Lox.Error(expr.Keyword, "Cannot use 'this' outside of a class.");
+                Cox.Error(expr.Keyword, "Cannot use 'this' outside of a class.");
             }
             else
             {
@@ -231,7 +231,7 @@ namespace lox
             {
                 if (scopes.Peek().ContainsKey(expr.Name.Lexeme) && scopes.Peek()[expr.Name.Lexeme] == false)
                 {
-                    Lox.Error(expr.Name, "Cannot read local variable in its own initializer.");
+                    Cox.Error(expr.Name, "Cannot read local variable in its own initializer.");
                 }
             }
 
@@ -286,7 +286,7 @@ namespace lox
             Dictionary<String, Boolean> scope = scopes.Peek();
             if (scope.ContainsKey(name.Lexeme))
             {
-                Lox.Error(name, "Variable with this name already Declared in this scope.");
+                Cox.Error(name, "Variable with this name already Declared in this scope.");
             }
 
             scope.Add(name.Lexeme, false);
